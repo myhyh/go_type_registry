@@ -152,7 +152,8 @@ func DistributedMain(rootPkg string,rootPath string){
 			panic(err)
 		}
 		if !fileExists{
-			packagePart := strings.TrimPrefix(dirPath,rootPath)
+			splits := strings.Split(dirPath,"/")
+			packagePart := splits[len(splits)-1]
 			rfile.WriteString("package "+packagePart+"\n")
 		}
 		rfile.Close()
